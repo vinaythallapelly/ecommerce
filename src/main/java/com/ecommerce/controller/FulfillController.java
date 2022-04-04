@@ -21,30 +21,33 @@ public class FulfillController {
     private ReturnService returnService;
 
 
-    //Process Order
+//Process Order
     @RequestMapping(value = "/processOrder/{orderCode}",method = RequestMethod.GET)
     private String processOrder(@PathVariable Integer orderCode){
         return productionService.processing(orderCode);
     }
-    //Packing Order
+
+//Packing Order
     @RequestMapping(value = "/packOrder/{orderCode}",method = RequestMethod.GET)
     private String packOrder(@PathVariable Integer orderCode){
         return packingService.pack(orderCode);
     }
-    //Shipping Order
+
+//Shipping Order
     @RequestMapping(value = "/shipOrder/{orderCode}",method = RequestMethod.GET)
     private String shipOrder(@PathVariable Integer orderCode){
         return shippingService.shipping(orderCode);
     }
-    //Delivering Order
+
+//Delivering Order
     @RequestMapping(value = "/deliveryOrder/{orderCode}",method = RequestMethod.GET)
     private String deliveryOrder(@PathVariable Integer orderCode){
         return deliveryService.delivery(orderCode);
     }
-    //Delivering Order
+
+//Delivering Order
     @RequestMapping(value = "/returnOrder/{orderCode}/{quantity}",method = RequestMethod.GET)
     private String returnOrder(@PathVariable Integer orderCode,@PathVariable int quantity){
         return returnService.returned(orderCode,quantity);
     }
-
 }

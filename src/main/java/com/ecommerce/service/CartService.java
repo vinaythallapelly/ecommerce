@@ -47,7 +47,7 @@ public class CartService {
     public List<CartModel> viewCart(){
         List<CartEntity> cartEntity=cartRepository.findAll();
         Double[] totalPrice ={0.0};
-        List<CartModel> cartModels=cartEntity.stream().map(abc ->{
+        return cartEntity.stream().map(abc ->{
             totalPrice[0]+=(abc.getSkuEntity().getPriceEntity().getPrice()*abc.getQuantity());
             CartModel cM = new CartModel(
                 abc.getCartCode(), abc.getSkuEntity().getProductsEntity().getProductCode(),
@@ -60,7 +60,5 @@ public class CartService {
             cM.setTotalPrice((totalPrice[0]));
         return cM;
         }).collect(Collectors.toList());
-
-        return cartModels;
     }
 }
