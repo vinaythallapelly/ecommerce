@@ -25,13 +25,6 @@ public class PackingService {
                 orderEntity.get().setStatus(packingEntity.getStatus());
                 packingRepository.save(packingEntity);
                 orderRepository.save(orderEntity.get());
-                OrderModel orderModel = new OrderModel(orderEntity.get().getOrderCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getProductsEntity().getProductName(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSkuCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSize(),
-                        orderEntity.get().getQuantity(),
-                        orderEntity.get().getQuantity() * orderEntity.get().getInventoryAddEntity().getSkuEntity().getPriceEntity().getPrice(),
-                        orderEntity.get().getStatus());
                 return "Order is Packing....😊!";
             }
             else if(orderEntity.get().getStatus().equalsIgnoreCase("RECEIVED")){

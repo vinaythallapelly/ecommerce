@@ -25,13 +25,6 @@ public class ProductionService {
                 productionsRepository.save(productionEntity);
                 orderEntity.get().setStatus(productionEntity.getStatus());
                 orderRepository.save(orderEntity.get());
-                OrderModel orderModel = new OrderModel(orderEntity.get().getOrderCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getProductsEntity().getProductName(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSkuCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSize(),
-                        orderEntity.get().getQuantity(),
-                        orderEntity.get().getQuantity() * orderEntity.get().getInventoryAddEntity().getSkuEntity().getPriceEntity().getPrice(),
-                        orderEntity.get().getStatus());
                 return "Order is Processing....😊!";
             }
         }

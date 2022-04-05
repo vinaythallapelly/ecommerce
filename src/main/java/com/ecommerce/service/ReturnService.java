@@ -30,13 +30,6 @@ public class ReturnService {
                 orderEntity.get().setStatus(returnEntity.getStatus());
                 returnRepository.save(returnEntity);
                 orderRepository.save(orderEntity.get());
-                OrderModel orderModel = new OrderModel(orderEntity.get().getOrderCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getProductsEntity().getProductName(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSkuCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSize(),
-                        orderEntity.get().getQuantity(),
-                        orderEntity.get().getQuantity() * orderEntity.get().getInventoryAddEntity().getSkuEntity().getPriceEntity().getPrice(),
-                        orderEntity.get().getStatus());
                 inventoryService.updateInventory(orderEntity.get().getInventoryAddEntity().getSkuCode(),quantity);
                 return "Order is Returned Successfully.....😊!";
             }

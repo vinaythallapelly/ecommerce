@@ -24,13 +24,6 @@ public class ShippingService {
                 orderEntity.get().setStatus(shippingEntity.getStatus());
                 shippingRepository.save(shippingEntity);
                 orderRepository.save(orderEntity.get());
-                OrderModel orderModel = new OrderModel(orderEntity.get().getOrderCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getProductsEntity().getProductName(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSkuCode(),
-                        orderEntity.get().getInventoryAddEntity().getSkuEntity().getSize(),
-                        orderEntity.get().getQuantity(),
-                        orderEntity.get().getQuantity() * orderEntity.get().getInventoryAddEntity().getSkuEntity().getPriceEntity().getPrice(),
-                        orderEntity.get().getStatus());
                 return "Order is Shipping.....😊!";
             }
             else if(orderEntity.get().getStatus().equalsIgnoreCase("RECEIVED")){
